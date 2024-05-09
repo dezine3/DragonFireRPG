@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Jaini&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Junge&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
+
+
+
+body {
+  background-color: #0a0a23;
+  margin: 10px;
+}
+
+#text {
+  background-color: #0a0a23;
+  color: #ffffff;
+  padding: 10px;
+  width: 500px;
+}
+
+#text img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: #303072 1px solid;
+  clear: both;
+  border-style: dotted;
+}
+
+.textBox {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+@keyframes blurIn {
+  0% { filter: blur(5px); opacity: 0; }
+  100% { filter: blur(0px); opacity: 1; }
+}
+
+@keyframes blurOut {
+  0% { filter: blur(0px); opacity: 1; }
+  100% { filter: blur(5px); opacity: 0; }
+}
+/* Monster textAlert */
+
+.alertText {
+  position: absolute;
+  top: 20%;
+  width: 400px;
+  animation: blurIn .5s forwards, shake 2s 1s, shake 2s 1s, blurOut 1s 2s forwards;
+  font-family: "Bungee Spice", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 72px;
+}
+
+
+.centered {
+  margin: 0 auto;
+  text-align: center;
+
+}
+
+#game {
+  padding: 10px;
+  background: linear-gradient(#303072, #090936);
+  margin: auto;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+#controls {
+  text-align: center;
+  margin:  0 auto;
+}
+
+#controls,
+#stats {
+  border: 1px solid #0a0a23;
+  padding: 5px;
+  color: #0a0a23;
+  display: none;
+}
+
+#stats {
+  background: url(./img/drag-ico.png) left center / auto no-repeat, linear-gradient(#090936 10%, gold 70%, #090936);
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+
+#monsterStats {
+  display: none;
+  border: 1px solid #0a0a23;
+  padding: 5px;
+  color: #ffffff;
+  background-color: #c70d0d;
+}
+
+.stat {
+  padding-right: 10px;
+}
+
+button {
+  cursor: pointer;
+  color: #0a0a23;
+  background-color: #feac32;
+  background-image: linear-gradient(#fecc4c, #ffac33);
+  border: 3px solid #feac32;
+}
+
+#dragon {
+  position: fixed;
+  top: 10px;
+  left: -5px;
+}
+
+#testmode {
+  background-color: #0a0a23;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  display: none; /* Set to hidden to display after starting */
+  margin: 5px auto; /* Horizontally center the button */
+}
+
+
+input[type="text"],
+button[type="button"] {
+  margin-top: 10px;
+}
+
+.nameInput {
+  background-color: #fff;
+  color: #0a0a23;
+}
+
+/* Fallback font */
+.jaini-regular {
+  font-family: 'Jaini', sans-serif; /* Use 'Jaini' font if available, otherwise use a generic sans-serif font */
+  font-weight: 400;
+  font-style: normal;
+}
+.im-fell-english-sc-regular {
+  font-family: "IM Fell English SC", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#playerNameDisplay {
+  font-family: 'Jaini', sans-serif;
+  font-weight: 500;
+  font-size: large;
+}
+
+#playerImage {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.introText {
+  font-family: 'Jaini', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #fff;
+  letter-spacing: 0.05em;
+  margin: 0 auto;
+  width: 80%;
+  text-align: center;
+}
