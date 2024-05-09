@@ -1,6 +1,9 @@
+/* Google Fonts */
+
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Jaini&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Junge&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sedan+SC&display=swap');
 
 
 
@@ -10,10 +13,12 @@ body {
 }
 
 #text {
-  background-color: #0a0a23;
-  color: #ffffff;
+  color: #000000;
   padding: 10px;
   width: 500px;
+  font-family: "Sedan SC", serif;
+  overflow:visible;
+  text-shadow: 2px 2px 4px #000000;
 }
 
 #text img {
@@ -76,10 +81,8 @@ body {
 
 #game {
   padding: 10px;
-  background: linear-gradient(#303072, #090936);
   margin: auto;
-  width: -moz-fit-content;
-  width: fit-content;
+  width: 500px;
 }
 
 #controls {

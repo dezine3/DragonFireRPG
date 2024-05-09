@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./rpg.css">
-<!-- font styles -->
+  <!-- font styles -->
   <title>DragonFire RPG</title>
 </head>
 <body>
@@ -25,31 +25,27 @@
     <span class="stat">Monster Name: <strong><span id="monsterName"></span></strong></span>
     <span class="stat">Health: <strong><span id="monsterHealth"></span></strong></span>
   </div>
-  <div id="text">
-    <p class="centered">Welcome to <span class="im-fell-english-sc-regular">DragonFire RPG</span></p>
-     Your name:
-     <input
-     type="text"
-     id="nameInput"
-     name="nameInput"
-     value="Adventurer"
-     onfocus="if (this.value === 'Adventurer') { this.value = ''; }"
-     onblur="if (this.value === '') { this.value = 'Adventurer'; }"
- >
-   <!-- <input id="nameInput" type="text" placeholder="Enter your name"> -->
-    <button id="startButton" type="button">Start</button>
+  <div id="parchmentPaper">
+    <div id="text">
+      <p class="centered">Welcome to <span class="im-fell-english-sc-regular">DragonFire RPG</span></p>
+      Your name:
+      <input
+        type="text"
+        id="nameInput"
+        name="nameInput"
+        value="Adventurer"
+        onfocus="if (this.value === 'Adventurer') { this.value = ''; }"
+        onblur="if (this.value === '') { this.value = 'Adventurer'; }"
+      >
+      <!-- <input id="nameInput" type="text" placeholder="Enter your name"> -->
+      <button id="startButton" type="button">Start</button>
+    </div>
+    <div class="testmode">
+      <button id="testmode" type="button">Test Mode</button>
+    </div>
+    <img id="playerImage" src="img/intro.jpg" style="display: block;">
   </div>
-  
-  <div class="testmode">
-    <button id="testmode" type="button">Test Mode</button>
-    
-  </div>
-  <img id="playerImage" src="img/intro.jpg" style="display: block;">
 </div>
-
-<!-- Action Text-->
-
-
 
 <script src="./rpg.js"></script>
 </body>

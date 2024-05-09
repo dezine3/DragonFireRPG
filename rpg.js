@@ -1,3 +1,30 @@
+// Background image function for text window 
+
+window.onload = function() {
+  // Log container dimensions
+  var container = document.getElementById('text');
+  console.log('Container Width:', container.offsetWidth);
+  console.log('Container Height:', container.offsetHeight);
+  
+  resizeBackground();
+};
+
+
+window.onresize = function() {
+  resizeBackground();
+};
+function resizeBackground() {
+  var container = document.getElementById('parchmentPaper');
+  var image = new Image();
+  image.src = './img/parchment.gif';
+  image.onload = function() {
+    container.style.width = '500px';
+    container.style.padding = '50px 0 50px 0';
+    container.style.background = `url(${image.src}) no-repeat center center / cover`;
+  };
+}
+
+
 // Initialize variables
 let xp = 0;
 let health = 100;
@@ -52,7 +79,7 @@ const dieMonsterAttack = [
   'img/slime-die.jpg',
   'img/beast-die.jpg',
   'img/dragon-die.jpg'
-]
+];
 
 const button1 = document.querySelector('#button1');
 const button2 = document.querySelector("#button2");
@@ -144,7 +171,7 @@ button1.onclick = goStore;
 button2.onclick = goCave;
 button3.onclick = fightDragon;
 
-function update(location, playerName) {
+function update(location, playerName, customText = null) {
   monsterStats.style.display = "none";
   button1.innerText = location["button text"][0];
   button2.innerText = location["button text"][1];
@@ -154,9 +181,9 @@ function update(location, playerName) {
   button3.onclick = location["button functions"][2];
   // Display the message with the player's name if provided
   if (playerName) {
-    text.innerHTML = `<div class="textBox">Welcome, ${playerName}! Prepare to battle the vicious dragon! ${location.text}</div>`;
+    text.innerHTML = `<div class="textBox">Welcome, ${playerName}! Prepare to battle the vicious dragon! ${customText ? customText : location.text}</div>`;
   } else {
-    text.innerHTML = `<div class="textBox">${location.text}</div>`;
+    text.innerHTML = `<div class="textBox">${customText ? customText : location.text}</div>`;
   }
 }
 
@@ -305,9 +332,9 @@ function attack() {
 
   if (monsterHealth <= 0) {
     if (fighting === 2) {
-      winGame();
+      winGame(); // Call winGame when fighting is 2 (dragon defeated)
     } else {
-      defeatMonster();
+      defeatMonster(); // Call defeatMonster when monsterHealth is zero
     }
   }
 
@@ -318,6 +345,8 @@ function attack() {
 
   text.innerHTML = attackMessage;
 }
+
+
 
 function getMonsterAttackValue(level) {
   const hit = (level * 5) - (Math.floor(Math.random() * xp));
@@ -337,7 +366,7 @@ function defeatMonster() {
   xp += monsters[fighting].level;
   goldText.innerText = gold;
   xpText.innerText = xp;
-  update(locations[4]);
+  update(locations[4], playerName, 'The monster screams "Arg!" as it dies. You gain experience points and find gold.');
 }
 
 function lose() {
@@ -345,8 +374,9 @@ function lose() {
 }
 
 function winGame() {
-  update(locations[6]);
+  update(locations[6], playerName, 'You defeat the dragon! YOU WIN THE GAME! 🎉');
 }
+
 
 function restart() {
   xp = 0;
@@ -407,3 +437,4 @@ function testMode() {
 // Initialize the Test Mode button
 const testModeButton = document.querySelector("#testmode");
 testModeButton.onclick = testMode;
+
