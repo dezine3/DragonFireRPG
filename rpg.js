@@ -1,13 +1,40 @@
 // Background image function for text window 
 
+function preloadImages() {
+  const images = [
+    './img/parchment.gif',
+    './img/slime-die.jpg',
+    './img/beast-die.jpg',
+    './img/dragon-die.jpg',
+    './img/store.jpg',
+    './img/insideshop.jpg',
+    './img/slime.jpg',
+    './img/slime2.jpg',
+    './img/beast.jpg',
+    './img/dragon.jpg',
+    './img/slime-dodge.jpg',
+    './img/beast-dodge.jpg',
+    './img/dragon-dodge.jpg',
+    './img/slime-attack.jpg',
+    './img/beast-attack.jpg',
+    './img/dragon-attack.jpg',
+    './img/slime-win.jpg',
+    './img/beast-win.jpg',
+    './img/dragon-win.jpg'
+  ];
+
+  images.forEach((image) => {
+    const img = new Image();
+    img.src = image;
+  });
+}
+
 window.onload = function() {
   // Log container dimensions
   var container = document.getElementById('text');
-  console.log('Container Width:', container.offsetWidth);
-  console.log('Container Height:', container.offsetHeight);
   resizeBackground();
+  preloadImages();
 };
-
 
 window.onresize = function() {
   resizeBackground();
@@ -334,32 +361,30 @@ function attack() {
     } else {
       defeatMonster(); // Call defeatMonster when monsterHealth is zero
     }
-  }
-
-  // Monster's attack if not defeated
-  if (monsterHealth > 0) {
-    health -= monsterAttackValue;
-  }
-
-  // Update health and monster health display
-  healthText.innerText = health;
-  monsterHealthText.innerText = monsterHealth;
-
-  // Construct attack message
-  if (monsterHealth <= 0) {
-    document.getElementById("text").innerHTML = "";    attackMessage += `<div class="textBox"><img src="${winImages[fighting]}" alt="Monster Image"><br>`;
-    attackMessage += ` The ${monsters[fighting].name} is defeated!</div>`;
   } else {
+    // Monster's attack if not defeated
+    health -= monsterAttackValue;
+
+    // Update health and monster health display
+    healthText.innerText = health;
+    monsterHealthText.innerText = monsterHealth;
+
+    // Construct attack message
     attackMessage += ` You dealt ${playerAttack} damage to the ${monsters[fighting].name}.`;
     attackMessage += ` The ${monsters[fighting].name} dealt ${monsterAttackValue} damage to you.</div>`;
+
+    // Display attack message
+    text.innerHTML = attackMessage;
   }
 
   if (health <= 0) {
-    lose();}
+    lose();
+  }
+}
+
 
   // Display attack message
   text.innerHTML = attackMessage;
-}
 
 function getMonsterAttackValue(level) {
   const hit = (level * 5) - (Math.floor(Math.random() * xp));
@@ -374,6 +399,12 @@ function dodge() {
   text.innerHTML = `<div class="textBox"><img src="${fightingMonstersDodge[fighting]}" />You dodge the attack from the ${monsters[fighting].name}</div>`;
 }
 
+function winGame() {
+  update(locations[6]);
+  text.innerHTML = `<div class="textBox"><img src="${winImages[fighting]}" />You defeat the ${monsters[fighting].name}! You have saved the town!</div>`;
+}
+
+
 function defeatMonster() {
   gold += Math.floor(monsters[fighting].level * 6.7);
   xp += monsters[fighting].level;
@@ -383,9 +414,10 @@ function defeatMonster() {
   text.innerHTML = `<div class="textBox"><img src="${winImages[fighting]}" />You defeat the ${monsters[fighting].name}! You have saved the town!</div>`;
 }
 
+
 function lose() {
   update(locations[5]);
-  text.innerHTML = `<div class="textBox"><img src="${winImages[fighting]}" />The ${monsters[fighting].name} strikes a final blow! You have died!</div>`;
+  text.innerHTML = `<div class="textBox"><img src="${dieMonsterAttack[fighting]}" />The ${monsters[fighting].name} strikes a final blow! You have died!</div>`;
 }
 
 function winGame() {
