@@ -5,7 +5,69 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sedan+SC&display=swap');
 
+@media only screen and (max-width: 600px) {
+  /* Add your responsive styles here */
+  body {
+    margin: 0;
+  }
 
+  #text {
+    width: 100%;
+  }
+
+  .textBox {
+    max-width: 100%;
+  }
+
+  .alertText {
+    top: 10%;
+    width: 80%;
+    font-size: 36px;
+  }
+
+  #game {
+    width: 100%;
+  }
+
+  #controls,
+  #stats {
+    display: block;
+  }
+
+  #monsterStats {
+    display: block;
+  }
+
+  .stat {
+    padding-right: 5px;
+  }
+
+  #dragon {
+    left: 0;
+  }
+
+  #testmode {
+    display: block;
+  }
+
+  input[type="text"],
+  button[type="button"] {
+    margin-top: 5px;
+  }
+
+  .nameInput {
+    background-color: #fff;
+    color: #0a0a23;
+  }
+
+  #playerNameDisplay {
+    font-size: medium;
+  }
+
+  .introText {
+    font-size: small;
+  }
+}
 
 body {
   background-color: #0a0a23;
