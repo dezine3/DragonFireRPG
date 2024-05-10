@@ -1,5 +1,19 @@
 // Background image function for text window 
 
+// Add a function for Test Mode
+function testMode() {
+  gold += 1000;
+  health += 1000;
+  goldText.innerText = gold;
+  healthText.innerText = health;
+  text.innerHTML = `<div class="textBox"><img src="img/gold.jpg" />Test Mode activated. You have added 1000 gold and 1000 health.</div>`;
+}
+
+// Initialize the Test Mode button
+const testModeButton = document.querySelector("#testmode");
+testModeButton.onclick = testMode;
+
+
 function preloadImages() {
   const images = [
     './img/parchment.gif',
@@ -472,16 +486,4 @@ function pick(guess) {
   }
 }
 
-// Add a function for Test Mode
-function testMode() {
-  gold += 1000;
-  health += 1000;
-  goldText.innerText = gold;
-  healthText.innerText = health;
-  text.innerHTML = `<div class="textBox"><img src="img/gold.jpg" />Test Mode activated. You have added 1000 gold and 1000 health.</div>`;
-}
-
-// Initialize the Test Mode button
-const testModeButton = document.querySelector("#testmode");
-testModeButton.onclick = testMode;
 
