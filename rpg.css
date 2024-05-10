@@ -21,6 +21,11 @@ body {
   text-shadow: 2px 2px 4px #000000;
 }
 
+#text p {
+  margin: 0 auto;
+  padding: 0;
+}
+
 #text img {
   display: block;
   margin-left: auto;
@@ -83,6 +88,8 @@ body {
   padding: 10px;
   margin: auto;
   width: 500px;
+/*  background-color: #f7deb8; */
+  /* background: linear-gradient(to bottom, #3e271a, #a68b60, #e0cda7, #a68b60, #3e271a); */
 }
 
 #controls {

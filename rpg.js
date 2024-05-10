@@ -5,7 +5,6 @@ window.onload = function() {
   var container = document.getElementById('text');
   console.log('Container Width:', container.offsetWidth);
   console.log('Container Height:', container.offsetHeight);
-  
   resizeBackground();
 };
 
@@ -150,13 +149,13 @@ const locations = [
     name: "lose",
     "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
     "button functions": [restart, restart, restart],
-    text: `<img src="${dieMonsterAttack[fighting]}.jpg" />You died. ☠`
+    text: `<img src="img/dragon-win.jpg" /><div class="centered">You defeat the dragon! YOU WIN THE GAME! &#x1F389</div>;`
   },
   {
     name: "win",
     "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
     "button functions": [restart, restart, restart],
-    text: `<img src="img/win.jpg" />You defeat the dragon! YOU WIN THE GAME! &#x1F389;`
+    text: `<img src="img/dragon-win.jpg" /><div class="centered">You defeat the dragon! YOU WIN THE GAME! &#x1F389</div>;`
   },
   {
     name: "easter egg",
@@ -276,6 +275,14 @@ const fightingMonsterAttack = [
   'img/dragon-attack.jpg'
 ];
 
+// Images for winning
+
+const winImages = [
+  'img/slime-win.jpg',
+  'img/beast-win.jpg',
+  'img/dragon-win.jpg'
+];
+
 // Text effects for the monster fight
 const monsterFightText = [
   '<div class="alertText">RAaAaH!!!</div>',
@@ -310,26 +317,17 @@ function goFight() {
   text.innerHTML += "Choose your action above.</div>";
 }
 
+// Updated function to handle victory conditions
+// Updated function to handle victory conditions
 function attack() {
   let attackMessage = `<div class="textBox"><img src="${fightingMonsterAttack[fighting]}" />The ${monsters[fighting].name} attacks. You attack it with your ${weapons[currentWeapon].name}.`;
-  health -= getMonsterAttackValue(monsters[fighting].level);
+  let monsterAttackValue = getMonsterAttackValue(monsters[fighting].level);
 
-  // Check if health is less than or equal to zero immediately after it's updated
-  if (health <= 0) {
-    health = 0; // Ensure health doesn't go below zero
-    lose();
-    return; // End the function here
-  }
+  // Player's attack
+  let playerAttack = weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;
+  monsterHealth -= playerAttack;
 
-  if (isMonsterHit()) {
-    monsterHealth -= weapons[currentWeapon].power + Math.floor(Math.random() * xp) + 1;    
-  } else {
-    attackMessage += " You miss.";
-  }
-
-  healthText.innerText = health;
-  monsterHealthText.innerText = monsterHealth;
-
+  // Check if the monster is defeated
   if (monsterHealth <= 0) {
     if (fighting === 2) {
       winGame(); // Call winGame when fighting is 2 (dragon defeated)
@@ -338,15 +336,30 @@ function attack() {
     }
   }
 
-  if (Math.random() <= .1 && inventory.length !== 1) {
-    attackMessage += ` Your ${inventory.pop()} breaks.`;
-    currentWeapon--;
+  // Monster's attack if not defeated
+  if (monsterHealth > 0) {
+    health -= monsterAttackValue;
   }
 
+  // Update health and monster health display
+  healthText.innerText = health;
+  monsterHealthText.innerText = monsterHealth;
+
+  // Construct attack message
+  if (monsterHealth <= 0) {
+    document.getElementById("text").innerHTML = "";    attackMessage += `<div class="textBox"><img src="${winImages[fighting]}" alt="Monster Image"><br>`;
+    attackMessage += ` The ${monsters[fighting].name} is defeated!</div>`;
+  } else {
+    attackMessage += ` You dealt ${playerAttack} damage to the ${monsters[fighting].name}.`;
+    attackMessage += ` The ${monsters[fighting].name} dealt ${monsterAttackValue} damage to you.</div>`;
+  }
+
+  if (health <= 0) {
+    lose();}
+
+  // Display attack message
   text.innerHTML = attackMessage;
 }
-
-
 
 function getMonsterAttackValue(level) {
   const hit = (level * 5) - (Math.floor(Math.random() * xp));
@@ -366,17 +379,19 @@ function defeatMonster() {
   xp += monsters[fighting].level;
   goldText.innerText = gold;
   xpText.innerText = xp;
-  update(locations[4], playerName, 'The monster screams "Arg!" as it dies. You gain experience points and find gold.');
+  update(locations[4]);
+  text.innerHTML = `<div class="textBox"><img src="${winImages[fighting]}" />You defeat the ${monsters[fighting].name}! You have saved the town!</div>`;
 }
 
 function lose() {
   update(locations[5]);
+  text.innerHTML = `<div class="textBox"><img src="${winImages[fighting]}" />The ${monsters[fighting].name} strikes a final blow! You have died!</div>`;
 }
 
 function winGame() {
-  update(locations[6], playerName, 'You defeat the dragon! YOU WIN THE GAME! 🎉');
+  update(locations[6]);
+  text.innerHTML = `<div class="textBox"><img src="${winImages[fighting]}" />You defeat the ${monsters[fighting].name}! You have saved the town!</div>`;
 }
-
 
 function restart() {
   xp = 0;
