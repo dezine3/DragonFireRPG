@@ -1,4 +1,4 @@
-# DragonFire RPG
+# DragonFire RPG V2
 
 Welcome to the DragonFire RPG repository! This project is an exciting role-playing game where you embark on a thrilling adventure in a fantasy world.
 
