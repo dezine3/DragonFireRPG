@@ -1,4 +1,6 @@
-# DragonFire RPG
+# DragonFire RPG V2
+
+This is going to be an extensive update to the basic function created in the original branch.
 
 Welcome to the DragonFire RPG repository! This project is an exciting role-playing game where you embark on a thrilling adventure in a fantasy world.
 
@@ -10,7 +12,7 @@ To begin your journey, simply clone this repository and run the `start` command.
 
 ## Features
 
-- **Character Creation**: As of now the only addional option in terms of your character is the ability to enter your name. It defaults to Adventurer if you do not change it.
+- **Character Creation**: As of now the only additional option in terms of your character is the ability to enter your name. It defaults to Adventurer if you do not change it.
 - **Epic Quests**: There are currently three monsters to defeat.
 - **Combat System**: Engage in strategic battles against formidable foes.
 
