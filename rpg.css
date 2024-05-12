@@ -34,7 +34,7 @@
     display: block;
   }
 
-  .stat {
+  .stats {
     padding-right: 5px;
   }
 
@@ -149,7 +149,7 @@ body {
 }
 
 #stats {
-  background: url(./img/drag-ico.png) left center / auto no-repeat, linear-gradient(#090936 10%, gold 70%, #090936);
+  background: url(./img/drag-ico.png) left center / auto no-repeat, linear-gradient(rgba(0,0,0,.4) 10%, gold 70%, rgba(0,0,0,.4));
   text-align: center;
   color: #ffffff;
   text-shadow: 2px 2px 4px #000000;
