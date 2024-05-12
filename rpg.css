@@ -201,14 +201,21 @@ button {
   left: -5px;
 }
 
+.testmode {
+    color: #ffffff;
+    display: flex; /* Use flexbox to align contents next to each other */
+    justify-content:center; /* Align contents with space between them */
+    align-items:center; /* Align contents vertically in the center */
+  }
 #testmode {
-  background-color: #0a0a23;
-  color: #ffffff;
-  border: 1px solid #ffffff;
-  display: none; /* Set to hidden to display after starting */
-  margin: 5px auto; /* Horizontally center the button */
+  display: none;
+  padding: 5px;
+  margin-right: 5px;
 }
 
+#resetGame {
+  padding: 5px;
+}
 
 input[type="text"],
 button[type="button"] {

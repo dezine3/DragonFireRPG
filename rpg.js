@@ -1,3 +1,72 @@
+// Call saveGame function when the window is about to be unloaded (before refresh or navigation)
+window.addEventListener('beforeunload', saveGame);
+
+// Function to save the game state
+function saveGame() {
+  const gameState = {
+    xp: xp,
+    health: health,
+    gold: gold,
+    currentWeapon: currentWeapon,
+    inventory: inventory,
+    playerName: playerName
+  };
+  localStorage.setItem('gameState', JSON.stringify(gameState));
+}
+
+
+// Call loadGame function when the window loads
+window.onload = function() {
+  loadGame();
+};
+
+function loadGame() {
+  const savedGame = localStorage.getItem('gameState');
+  console.log("Saved Game:", savedGame); // Log saved game state
+  if (savedGame) {
+    try {
+      const gameState = JSON.parse(savedGame);
+      xp = gameState.xp;
+      health = gameState.health;
+      gold = gameState.gold;
+      currentWeapon = gameState.currentWeapon;
+      inventory = gameState.inventory;
+      playerName = gameState.playerName;
+      // Update UI with loaded game state
+      goldText.innerText = gold;
+      healthText.innerText = health;
+      xpText.innerText = xp;
+      // Check if playerName exists and proceed accordingly
+      if (playerName) {
+        // Player name is saved, proceed with loading game state
+        outputText.innerHTML = `<div class="textBox">Welcome to <span id="im-fell-english-sc-regular">DragonFire RPG</span>, ${playerName}! Prepare to battle the vicious dragon! You are currently in the Town Square.</div>`;
+        document.getElementById("controls").style.display = "block";
+        document.getElementById("stats").style.display = "block";
+        document.getElementById("testmode").style.display = "block"; // Display the Test Mode button
+        document.getElementById("playerImage").style.display = "none"; // Hide the image
+        document.getElementById("playerNameDisplay").textContent = playerName + `:`;
+        update(locations[0], playerName); // Directly go to locations[0]
+        return; // Exit the function to prevent further execution
+      }
+      // playerName not found, proceed with regular initialization
+    } catch (error) {
+      console.error("Error loading game state:", error);
+    }
+  }
+}
+
+// Call loadGame function when the window loads
+window.onload = function() {
+  loadGame();
+  // Log container dimensions
+  var container = document.getElementById('text');
+  resizeBackground();
+  preloadImages();
+};
+
+// Call saveGame function whenever the game state changes
+// For example, at the end of each function where you update game state
+
 // Background image function for text window 
 
 // Add a function for Test Mode
@@ -43,13 +112,6 @@ function preloadImages() {
   });
 }
 
-window.onload = function() {
-  // Log container dimensions
-  var container = document.getElementById('text');
-  resizeBackground();
-  preloadImages();
-};
-
 window.onresize = function() {
   resizeBackground();
 };
@@ -79,6 +141,45 @@ let playerName = ""; // Initialize player name
 const nameInput = document.querySelector("#nameInput");
 const startButton = document.querySelector("#startButton");
 const outputText = document.querySelector("#text"); // Changed variable name to avoid conflict
+
+// Get the reset game button
+const resetGameButton = document.querySelector("#resetGame");
+
+// Event listener for the reset game button
+resetGameButton.addEventListener("click", resetGame);
+
+// Function to refresh the page
+function refreshPage() {
+}
+
+// Function to reset the game state
+function resetGame() {
+  // Reset all variables to their initial values
+  xp = 0;
+  health = 100;
+  gold = 50;
+  currentWeapon = 0;
+  inventory = ["stick"];
+  playerName = "";
+  location.reload();
+  // Update UI elements to reflect the reset state
+  goldText.innerText = gold;
+  healthText.innerText = health;
+  xpText.innerText = xp;
+  document.getElementById("playerNameDisplay").textContent = ""; // Clear player name display
+  document.getElementById("controls").style.display = "block"; // Hide controls
+  document.getElementById("stats").style.display = "block"; // Hide stats
+  document.getElementById("testmode").style.display = "block"; // Hide Test Mode button
+  document.getElementById("playerImage").style.display = "none"; // Show player image
+
+  // Reset game location to the initial state
+  update(locations[0], "Adventurer"); // Use default name "Adventurer" for the initial state
+  
+  // Save the game state after resetting
+  saveGame();
+}
+
+
 
 // Event listener for name input
 nameInput.addEventListener("input", (event) => {
@@ -359,7 +460,6 @@ function goFight() {
 }
 
 // Updated function to handle victory conditions
-// Updated function to handle victory conditions
 function attack() {
   let attackMessage = `<div class="textBox"><img src="${fightingMonsterAttack[fighting]}" />The ${monsters[fighting].name} attacks. You attack it with your ${weapons[currentWeapon].name}.`;
   let monsterAttackValue = getMonsterAttackValue(monsters[fighting].level);
@@ -394,11 +494,10 @@ function attack() {
   if (health <= 0) {
     lose();
   }
+
+  // Call saveGame function whenever the game state changes
+  saveGame();
 }
-
-
-  // Display attack message
-  text.innerHTML = attackMessage;
 
 function getMonsterAttackValue(level) {
   const hit = (level * 5) - (Math.floor(Math.random() * xp));
@@ -485,5 +584,3 @@ function pick(guess) {
     }
   }
 }
-
-
