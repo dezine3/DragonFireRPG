@@ -1,6 +1,8 @@
-/* Google Fonts */
-
 /* Import Google Fonts here */
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Jaini&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Junge&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sedan+SC&display=swap');
 
 @media only screen and (max-width: 600px) {
   /* Add your responsive styles here */
