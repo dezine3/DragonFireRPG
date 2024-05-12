@@ -1,3 +1,8 @@
+function toggleToolsMenu() {
+  var toolsMenuContent = document.querySelector('.toolsMenuContent');
+  toolsMenuContent.classList.toggle('open');
+}
+
 // Call saveGame function when the window is about to be unloaded (before refresh or navigation)
 window.addEventListener('beforeunload', saveGame);
 
@@ -65,9 +70,8 @@ window.onload = function() {
 };
 
 // Call saveGame function whenever the game state changes
-// For example, at the end of each function where you update game state
 
-// Background image function for text window 
+
 
 // Add a function for Test Mode
 function testMode() {
@@ -75,7 +79,7 @@ function testMode() {
   health += 1000;
   goldText.innerText = gold;
   healthText.innerText = health;
-  text.innerHTML = `<div class="textBox"><img src="img/gold.jpg" />Test Mode activated. You have added 1000 gold and 1000 health.</div>`;
+  text.innerHTML = `<div class="textBox"><img src="img/gold.png" />Test Mode activated. You have added 1000 gold and 1000 health.</div>`;
 }
 
 // Initialize the Test Mode button
@@ -86,24 +90,25 @@ testModeButton.onclick = testMode;
 function preloadImages() {
   const images = [
     './img/parchment.gif',
-    './img/slime-die.jpg',
-    './img/beast-die.jpg',
-    './img/dragon-die.jpg',
-    './img/store.jpg',
-    './img/insideshop.jpg',
-    './img/slime.jpg',
-    './img/slime2.jpg',
-    './img/beast.jpg',
-    './img/dragon.jpg',
-    './img/slime-dodge.jpg',
-    './img/beast-dodge.jpg',
-    './img/dragon-dodge.jpg',
-    './img/slime-attack.jpg',
-    './img/beast-attack.jpg',
-    './img/dragon-attack.jpg',
-    './img/slime-win.jpg',
-    './img/beast-win.jpg',
-    './img/dragon-win.jpg'
+    './img/slime-die.png',
+    './img/beast-die.png',
+    './img/dragon-die.png',
+    './img/store.png',
+    './img/insideshop.png',
+    './img/slime.png',
+    './img/slime2.png',
+    './img/beast.png',
+    './img/dragon.png',
+    './img/slime-dodge.png',
+    './img/beast-dodge.png',
+    './img/dragon-dodge.png',
+    './img/slime-attack.png',
+    './img/beast-attack.png',
+    './img/dragon-attack.png',
+    './img/slime-win.png',
+    './img/beast-win.png',
+    './img/dragon-win.png',
+    '/img/intro.png'
   ];
 
   images.forEach((image) => {
@@ -217,9 +222,9 @@ document.getElementById("startButton").addEventListener("click", () => {
 // Initialize variables
 
 const dieMonsterAttack = [
-  'img/slime-die.jpg',
-  'img/beast-die.jpg',
-  'img/dragon-die.jpg'
+  'img/slime-die.png',
+  'img/beast-die.png',
+  'img/dragon-die.png'
 ];
 
 const button1 = document.querySelector('#button1');
@@ -261,19 +266,19 @@ const locations = [
     name: "town square",
     "button text": ["Go to store", "Go to cave", "Fight dragon"],
     "button functions": [goStore, goCave, fightDragon],
-    text: '<img src="img/store.jpg" />You are in the town square. You see a sign that says "Store."<br/><br/>In the distance, you see a dark cave surrounded by molten slime.'
+    text: '<img src="img/store.png" />You are in the town square. You see a sign that says "Store."<br/><br/>In the distance, you see a dark cave surrounded by molten slime.'
   },
   {
     name: "store",
     "button text": ["Buy 10 health (10 gold)", "Buy weapon (30 gold)", "Go to town square"],
     "button functions": [buyHealth, buyWeapon, goTown],
-    text: `<img src="img/insideshop.jpg" />You enter the store. You see a tall graying man standing behind the counter. He looks at you and says, 'What can I do fer you?' You see a shiny dagger on the wall and a shelf full of green and yellow potions.`
+    text: `<img src="img/insideshop.png" />You enter the store. You see a tall graying man standing behind the counter. He looks at you and says, 'What can I do fer you?' You see a shiny dagger on the wall and a shelf full of green and yellow potions.`
   },
   {
     name: "cave",
     "button text": ["Fight slime", "Fight fanged beast", "Go to town square"],
     "button functions": [fightSlime, fightBeast, goTown],
-    text: '<img src="img/slime.jpg" />You walk towards the cave in the distance. Rocks and giant trees clutter the way. Looking ahead you see a giant red slime slowly crawling towards you. You ready your weapon and prepare to fight. Further in the distance you can see a fanged beast guarding the entrance to the cave.'
+    text: '<img src="img/slime.png" />You walk towards the cave in the distance. Rocks and giant trees clutter the way. Looking ahead you see a giant red slime slowly crawling towards you. You ready your weapon and prepare to fight. Further in the distance you can see a fanged beast guarding the entrance to the cave.'
   },
   {
     name: "fight",
@@ -291,13 +296,13 @@ const locations = [
     name: "lose",
     "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
     "button functions": [restart, restart, restart],
-    text: `<img src="img/dragon-win.jpg" /><div class="centered">You defeat the dragon! YOU WIN THE GAME! &#x1F389</div>;`
+    text: `<img src="img/dragon-win.png" /><div class="centered">You defeat the dragon! YOU WIN THE GAME! &#x1F389</div>;`
   },
   {
     name: "win",
     "button text": ["REPLAY?", "REPLAY?", "REPLAY?"],
     "button functions": [restart, restart, restart],
-    text: `<img src="img/dragon-win.jpg" /><div class="centered">You defeat the dragon! YOU WIN THE GAME! &#x1F389</div>;`
+    text: `<img src="img/dragon-win.png" /><div class="centered">You defeat the dragon! YOU WIN THE GAME! &#x1F389</div>;`
   },
   {
     name: "easter egg",
@@ -347,7 +352,7 @@ function buyHealth() {
     goldText.innerText = gold;
     healthText.innerText = health;
   } else {
-    text.innerHTML = `<img src="img/empty-coin2.jpg" />You do not have enough gold to buy health Adventurer!`;
+    text.innerHTML = `<img src="img/empty-coin2.png" />You do not have enough gold to buy health Adventurer!`;
   }
 }
 
@@ -361,7 +366,7 @@ function buyWeapon() {
       text.innerHTML = `<div class="textBox">You now have a ${newWeapon}. In your inventory you have: ${inventory}</div>`;
       inventory.push(newWeapon);
     } else {
-      text.innerHTML = `<div class="textBox"><img src="img/empty-coin.jpg" />You do not have enough gold to buy a weapon ${playerName}!</div>`;
+      text.innerHTML = `<div class="textBox"><img src="img/empty-coin.png" />You do not have enough gold to buy a weapon ${playerName}!</div>`;
     }
   } else {
     text.innerHTML = `<div class="textBox">You already have the most powerful weapon!</div>`;
@@ -398,31 +403,31 @@ function fightDragon() {
 
 // Images for the monsters
 const fightingImages = [
-  'img/slime2.jpg',          // Image URL for the slime
-  'img/beast.jpg',          // Image URL for the fanged beast
-  'img/dragon.jpg'          // Image URL for the dragon
+  'img/slime2.png',          // Image URL for the slime
+  'img/beast.png',          // Image URL for the fanged beast
+  'img/dragon.png'          // Image URL for the dragon
 ];
 
 // Images for the monsters dodge
 const fightingMonstersDodge = [ 
-  'img/slime-dodge.jpg',
-  'img/beast-dodge.jpg',
-  'img/dragon-dodge.jpg'          
+  'img/slime-dodge.png',
+  'img/beast-dodge.png',
+  'img/dragon-dodge.png'          
 ];
 
 // Images for monster attacks
 const fightingMonsterAttack = [
-  'img/slime-attack.jpg',
-  'img/beast-attack.jpg',
-  'img/dragon-attack.jpg'
+  'img/slime-attack.png',
+  'img/beast-attack.png',
+  'img/dragon-attack.png'
 ];
 
 // Images for winning
 
 const winImages = [
-  'img/slime-win.jpg',
-  'img/beast-win.jpg',
-  'img/dragon-win.jpg'
+  'img/slime-win.png',
+  'img/beast-win.png',
+  'img/dragon-win.png'
 ];
 
 // Text effects for the monster fight

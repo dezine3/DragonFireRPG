@@ -16,11 +16,7 @@
     <span class="stat">Health: <strong><span id="healthText">100</span></strong></span>
     <span class="stat">Gold: <strong><span id="goldText">50</span></strong></span>
   </div>
-  <div id="controls">
-    <button id="button1" type="button">Go to store</button>
-    <button id="button2" type="button">Go to cave</button>
-    <button id="button3" type="button">Fight dragon</button>
-  </div>
+
   <div id="monsterStats">
     <span class="stat">Monster Name: <strong><span id="monsterName"></span></strong></span>
     <span class="stat">Health: <strong><span id="monsterHealth"></span></strong></span>
@@ -40,13 +36,27 @@
       <!-- <input id="nameInput" type="text" placeholder="Enter your name"> -->
       <button id="startButton" type="button">Start</button>
     </div>
-    <div class="testmode">
-      <button id="testmode" type="button">Test Mode</button>
-      <button id="resetGame" type="button">Reset Game</button>
+    <div id="controls">
+      <button id="button1" type="button">Go to store</button>
+      <button id="button2" type="button">Go to cave</button>
+      <button id="button3" type="button">Fight dragon</button>
     </div>
-    <img id="playerImage" src="img/intro.jpg" style="display: block;">
+    <img id="playerImage" src="img/intro.png" style="display: block;">
   </div>
 </div>
+
+<!-- slide out menu for testing and reset buttons-->
+
+<div class="toolsMenu">
+  <button id="toolsButton" type="button" onclick="toggleToolsMenu()">TOOLS</button>
+  <div class="toolsMenuContent">
+    <button id="testmode" type="button">Test Mode</button>
+    <button id="resetGame" type="button">Reset Game</button>
+  </div>
+</div>
+
+
+
 
 <script src="./rpg.js"></script>
 </body>
