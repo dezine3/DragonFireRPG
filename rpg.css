@@ -10,12 +10,6 @@
     margin: 0;
   }
 
-  #text {
-    width: 100%;
-    padding: 5%; /* Adjust padding for smaller screens */
-    font-size: 16px; /* Adjust font size for smaller screens */
-  }
-
   .textBox {
     max-width: 100%;
   }
@@ -79,7 +73,7 @@ body {
 #text {
   color: #000000;
   padding: 10px;
-  width: 80%; /* Adjust width for smaller screens */
+  width: 100%;
   font-family: "Sedan SC", serif;
   overflow: visible;
   text-shadow: 2px 2px 4px #000000;
