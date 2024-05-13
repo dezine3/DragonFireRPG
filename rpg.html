@@ -11,19 +11,19 @@
 
 <div id="game">
   <div id="parchmentPaper">
-  <div id="stats">
-    <span id="playerNameDisplay"></span>
-    <span class="stat">XP: <strong><span id="xpText">0</span></strong></span>
-    <span class="stat">Health: <strong><span id="healthText">100</span></strong></span>
-    <span class="stat">Gold: <strong><span id="goldText">50</span></strong></span>
-  </div>
+    <div id="stats" aria-live="polite">
+      <span id="playerNameDisplay"></span>
+      <span class="stat">XP: <strong><span id="xpText">0</span></strong></span>
+      <span class="stat">Health: <strong><span id="healthText">100</span></strong></span>
+      <span class="stat">Gold: <strong><span id="goldText">50</span></strong></span>
+    </div>
 
-  <div id="monsterStats">
-    <span class="stat">Monster Name: <strong><span id="monsterName"></span></strong></span>
-    <span class="stat">Health: <strong><span id="monsterHealth"></span></strong></span>
-  </div>
+    <div id="monsterStats" aria-live="polite">
+      <span class="stat">Monster Name: <strong><span id="monsterName"></span></strong></span>
+      <span class="stat">Health: <strong><span id="monsterHealth"></span></strong></span>
+    </div>
   
-    <div id="text">
+    <div id="text" aria-live="polite">
       <p class="centered">Welcome to <span class="im-fell-english-sc-regular">DragonFire RPG</span></p>
       Your name:
       <input
@@ -33,21 +33,21 @@
         value="Adventurer"
         onfocus="if (this.value === 'Adventurer') { this.value = ''; }"
         onblur="if (this.value === '') { this.value = 'Adventurer'; }"
+        aria-label="Enter your name"
       >
-      <!-- <input id="nameInput" type="text" placeholder="Enter your name"> -->
       <button id="startButton" type="button">Start</button>
     </div>
+    
     <div id="controls">
       <button id="button1" type="button">Go to store</button>
       <button id="button2" type="button">Go to cave</button>
       <button id="button3" type="button">Fight dragon</button>
     </div>
-    <img id="playerImage" src="img/intro.png" style="display: block;">
+    <img id="playerImage" src="img/intro.png" style="display: block;" title="Player Image">
   </div>
 </div>
 
 <!-- slide out menu for testing and reset buttons-->
-
 <div class="toolsMenu">
   <button id="toolsButton" type="button" onclick="toggleToolsMenu()">TOOLS</button>
   <div class="toolsMenuContent">
@@ -56,9 +56,7 @@
   </div>
 </div>
 
-
-
-
 <script src="./rpg.js"></script>
+<script src="./access.js"></script>
 </body>
 </html>

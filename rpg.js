@@ -1,3 +1,5 @@
+
+
 function toggleToolsMenu() {
   var toolsMenuContent = document.querySelector('.toolsMenuContent');
   toolsMenuContent.classList.toggle('open');
@@ -219,6 +221,11 @@ document.getElementById("startButton").addEventListener("click", () => {
 });
 
 
+
+
+
+
+
 // Initialize variables
 
 const dieMonsterAttack = [
@@ -332,6 +339,8 @@ function update(location, playerName, customText = null) {
     text.innerHTML = `<div class="textBox">${customText ? customText : location.text}</div>`;
   }
 }
+
+
 
 function goTown() {
   update(locations[0]);
