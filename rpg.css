@@ -1,11 +1,11 @@
-/* Import Google Fonts here */
+/* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Jaini&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Junge&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sedan+SC&display=swap');
 
+/* Responsive styles for screens narrower than 600px */
 @media only screen and (max-width: 600px) {
-  /* Add your responsive styles here */
   body {
     margin: 0;
   }
@@ -16,9 +16,9 @@
 
   .alertText {
     top: 10%;
-    left: 5%; /* Adjust left positioning for smaller screens */
-    width: 90%; /* Adjust width for smaller screens */
-    font-size: 24px; /* Adjust font size for smaller screens */
+    left: 5%;
+    width: 90%;
+    font-size: 3.2vw; /* Responsive font size */
   }
 
   #game {
@@ -35,7 +35,7 @@
   }
 
   .stats {
-    padding-right: 5px;
+    padding-right: 0.5rem;
   }
 
   #dragon {
@@ -48,7 +48,7 @@
 
   input[type="text"],
   button[type="button"] {
-    margin-top: 5px;
+    margin-top: 0.5rem;
   }
 
   .nameInput {
@@ -57,11 +57,11 @@
   }
 
   #playerNameDisplay {
-    font-size: medium;
+    font-size: 1.25rem;
   }
 
   .introText {
-    font-size: small;
+    font-size: 0.875rem;
   }
 }
 
@@ -109,17 +109,16 @@ body {
 }
 
 /* Monster textAlert */
-
 .alertText {
   position: absolute;
   top: 20%;
   left: 18%;
-  width: 400px;
+  width: 50vw;
   animation: blurIn .5s forwards, shake 2s 1s, shake 2s 1s, blurOut 1s 2s forwards;
   font-family: "Bungee Spice", sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 72px;
+  font-size: 5vw; /* Responsive font size */
   z-index: 10000;
 }
 
@@ -131,16 +130,12 @@ body {
 #game {
   padding: 10px;
   margin: auto;
-  width: 500px;
-/*  background-color: #f7deb8; */
-  /* background: linear-gradient(to bottom, #3e271a, #a68b60, #e0cda7, #a68b60, #3e271a); */
+  width: 80vw;
 }
-
-/* Action buttons */
 
 #controls {
   text-align: center;
-  margin:  10px auto;
+  margin: 10px auto;
   background: linear-gradient(#fecc4c, #ffac33);
   padding: 0;
 }
@@ -148,11 +143,11 @@ body {
 #controls button {
   margin: 0;
   padding: 5px;
-  font-family: 'sedan sc', sans-serif;
+  font-family: 'Sedan SC', sans-serif;
   font-weight: 400;
   font-style: normal;
   display: inline-block;
-  font-size: 24px;
+  font-size: 2vw; /* Responsive font size */
   background-color: #feac32;
   border: none;
 }
@@ -160,17 +155,18 @@ body {
 #controls button:hover {
   background-color: #6d4d1d;
   color: #fff;
-  background: none;}
+  background: none;
+}
 
 #controls button:active {
   margin: 0;
   color: #000000;
   padding: 5px;
-  font-family: 'sedan sc', sans-serif;
+  font-family: 'Sedan SC', sans-serif;
   font-weight: 400;
   font-style: normal;
   display: inline-block;
-  font-size: 24px;
+  font-size: 2vw; /* Responsive font size */
   background-color: #feac32;
   border: none;
 }
@@ -198,7 +194,7 @@ body {
 }
 
 .stat {
-  padding-right: 10px;
+  padding-right: 1rem;
 }
 
 button {
@@ -216,11 +212,11 @@ button {
 }
 
 .testmode {
-    color: #ffffff;
-    display: flex; /* Use flexbox to align contents next to each other */
-    justify-content:center; /* Align contents with space between them */
-    align-items:center; /* Align contents vertically in the center */
-  }
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 #testmode {
   display: none;
@@ -234,7 +230,7 @@ button {
 
 input[type="text"],
 button[type="button"] {
-  margin-top: 10px;
+  margin-top: 1rem;
 }
 
 .nameInput {
@@ -242,9 +238,8 @@ button[type="button"] {
   color: #0a0a23;
 }
 
-/* Fallback font */
 .jaini-regular {
-  font-family: 'Jaini', sans-serif; /* Use 'Jaini' font if available, otherwise use a generic sans-serif font */
+  font-family: 'Jaini', sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -258,7 +253,7 @@ button[type="button"] {
 #playerNameDisplay {
   font-family: 'Jaini', sans-serif;
   font-weight: 500;
-  font-size: large;
+  font-size: 1.5rem;
 }
 
 #playerImage {
@@ -277,8 +272,6 @@ button[type="button"] {
   width: 80%;
   text-align: center;
 }
-
-/* Slide out menu for testing options and reset */
 
 .toolsMenu {
   position: fixed;
